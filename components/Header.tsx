@@ -8,7 +8,7 @@ function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const router = useRouter();
 
-    var styles = {
+    let styles = {
         bmBurgerButton: {
             position: 'relative',
             width: '24px',
@@ -35,7 +35,7 @@ function Header() {
         },
         bmMenu: {
             "background-image": 'url(/images/kobe-menu.webp)',
-            "background-position": "100% 50%",
+            "background-position": "85% 50%",
             "background-size": "cover",
             padding: '2.5em 1em 0',
             fontSize: '1.15em'
@@ -60,28 +60,28 @@ function Header() {
                 onClick={() => setIsNavOpen((prev) => !prev)}>
                     <Menu styles={ styles } className="font-header uppercase leading-10 text-right" width={ 290 }>
                         <Link href='/'>
-                            <h1 className={router.pathname == "/" ? "cursor-pointer text-stone-400" : "cursor-pointer hover:text-stone-400"}>Home</h1>
+                            <h1 className={router.pathname == "/" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Home</h1>
                         </Link>
                         <Link href='/blog'>
-                            <h1 className={router.pathname == "/blog" ? "cursor-pointer text-stone-400" : "cursor-pointer hover:text-stone-400"}>Blog</h1>
+                            <h1 className={router.pathname == "/blog" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Blog</h1>
                         </Link>
                         <Link href='/contact'>
-                            <h1 className={router.pathname == "/contact" ? "cursor-pointer text-stone-400" : "cursor-pointer hover:text-stone-400"}>Contact Us</h1>
+                            <h1 className={router.pathname == "/contact" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Contact Us</h1>
                         </Link>
                         <Link href='/daily'>
-                            <h1 className={router.pathname == "/daily" ? "cursor-pointer text-stone-400" : "cursor-pointer hover:text-stone-400"}>Daily Question</h1>
+                            <h1 className={router.pathname == "/daily" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Daily Question</h1>
                         </Link>
                     </Menu>
                 </div>
                 <div className="hidden font-header uppercase text-white md:flex flex-row space-x-5">
                     <Link href='/'>
-                        <h1 className={router.pathname == "/" ? "cursor-pointer text-stone-400" : "cursor-pointer hover:text-stone-400"}>Home</h1>
+                        <h1 className={router.pathname == "/" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Home</h1>
                     </Link>
                     <Link href='/blog'>
-                        <h1 className={router.pathname == "/blog" ? "cursor-pointer text-stone-400" : "cursor-pointer hover:text-stone-400"}>Blog</h1>
+                        <h1 className={router.pathname == "/blog" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Blog</h1>
                     </Link>
                     <Link href='/contact'>
-                        <h1 className={router.pathname == "/contact" ? "cursor-pointer text-stone-400" : "cursor-pointer hover:text-stone-400"}>Contact Us</h1>
+                        <h1 className={router.pathname == "/contact" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Contact Us</h1>
                     </Link>
                 </div>
                 <div className="w-36 -mb-1.5 max-w-[40%] md:hidden">
@@ -92,14 +92,14 @@ function Header() {
                         width={1950}
                     />
                 </div>
-                <div className="-mb-1.5 max-w-[10%]">
+                <div className="-mb-1.5 max-w-[10%] transition duration-500 hover:brightness-75 hover:ease-in-out">
                     <Link href='/daily'>
                         <a>
                             <Image 
-                                    className="cursor-pointer" 
-                                    src="/images/daily-icon.png" 
-                                    alt="Daily Sports Quiz Icon" 
-                                    width={30} height={30}
+                                className="cursor-pointer" 
+                                src="/images/daily-icon.png" 
+                                alt="Daily Sports Quiz Icon" 
+                                width={30} height={30}
                             />
                         </a>
                     </Link>
