@@ -11,7 +11,7 @@ interface Props {
 export default function Home({ posts }: Props) {
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="md:mx-5">
+      <div className="md:mx-5" id="outer-container">
         <Head>
           <title>Sports Quiz</title>
           <link rel="icon" href="/favicon.ico" />
@@ -23,7 +23,9 @@ export default function Home({ posts }: Props) {
             />
         </Head>
         <Header />
-        <PostGrid posts={posts} />
+        <main id="page-wrap">
+          <PostGrid posts={posts} />
+        </main>
       </div>
     </div>
   )

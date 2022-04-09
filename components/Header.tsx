@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import { slide as Menu } from 'react-burger-menu'
+import { scaleDown as Menu } from 'react-burger-menu'
 import { useRouter } from 'next/router'
 
 function Header() {
@@ -58,7 +58,7 @@ function Header() {
             <header className="bg-black flex flex-row items-center justify-between px-5 py-2">
             <div className="flex md:hidden cursor-pointer bg-black text-white" 
                 onClick={() => setIsNavOpen((prev) => !prev)}>
-                    <Menu styles={ styles } className="font-header uppercase leading-10 text-right" width={ 290 }>
+                    <Menu styles={ styles } className="font-header uppercase leading-10 text-right" width={ 290 } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
                         <Link href='/'>
                             <h1 className={router.pathname == "/" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Home</h1>
                         </Link>
