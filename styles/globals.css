@@ -6,3 +6,21 @@
     font-family: "Oswald";
     src: url("/fonts/Oswald-Bold.ttf");
 }  
+
+@font-face {
+    font-family: "Verdana";
+    src: url("/fonts/verdana.ttf");
+}  
+
+html, body {
+    height: 100%;
+}
+
+#__next {
+    height: 100%;
+}
+
+p {
+    font-family: Verdana;
+    padding: 10px 0;
+}

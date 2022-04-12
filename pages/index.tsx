@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import PostGrid from '../components/PostGrid'
 import { sanityClient } from '../sanity.js'
 import { Post } from '../typings'
+import Footer from '../components/Footer'
 
 interface Props {
   posts: [Post];
@@ -10,8 +11,8 @@ interface Props {
 
 export default function Home({ posts }: Props) {
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="md:mx-5" id="outer-container">
+    <div className="max-w-7xl mx-auto h-full">
+      <div className="md:mx-5 h-full" id="outer-container">
         <Head>
           <title>Sports Quiz</title>
           <link rel="icon" href="/favicon.ico" />
@@ -26,6 +27,7 @@ export default function Home({ posts }: Props) {
         <main id="page-wrap">
           <PostGrid posts={posts} />
         </main>
+        <Footer />
       </div>
     </div>
   )

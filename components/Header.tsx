@@ -38,7 +38,8 @@ function Header() {
             "background-position": "85% 50%",
             "background-size": "cover",
             padding: '2.5em 1em 0',
-            fontSize: '1.15em'
+            fontSize: '1.15em',
+            height: "100%"
         },
         bmItemList: {
             color: 'white',
@@ -49,7 +50,9 @@ function Header() {
         },
         bmOverlay: {
             top: "0px",
-            background: 'rgba(0, 0, 0, 0.3)'
+            filter: "brightness(.5)",
+            "transition-timing-function": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "transition-duration": "500ms"
         }
     }
       
@@ -84,13 +87,18 @@ function Header() {
                         <h1 className={router.pathname == "/contact" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Contact Us</h1>
                     </Link>
                 </div>
-                <div className="w-36 -mb-1.5 max-w-[40%] md:hidden">
-                    <Image 
-                        src="/images/logo-white.webp" 
-                        alt="Sports Quiz Logo" 
-                        height={450}
-                        width={1950}
-                    />
+                <div className="w-36 -mb-1.5 max-w-[40%] md:hidden transition duration-500 hover:brightness-50 hover:ease-in-out">
+                    <Link href='/'>
+                        <a>
+                            <Image 
+                                className="cursor-pointer"
+                                src="/images/logo-white.webp" 
+                                alt="Sports Quiz Logo" 
+                                height={450}
+                                width={1950}
+                            />
+                        </a>
+                    </Link>
                 </div>
                 <div className="-mb-1.5 max-w-[10%] transition duration-500 hover:brightness-75 hover:ease-in-out">
                     <Link href='/daily'>
@@ -106,12 +114,17 @@ function Header() {
                 </div>
             </header>
             <div className="hidden w-96 mx-auto py-10 max-w-[50%] md:flex">
-                <Image 
-                    src="/images/logo.webp" 
-                    alt="Sports Quiz Logo" 
-                    height={450}
-                    width={1950}
-                />
+                <Link href='/'>
+                    <a>
+                        <Image 
+                            className="cursor-pointer"
+                            src="/images/logo.webp" 
+                            alt="Sports Quiz Logo" 
+                            height={450}
+                            width={1950}
+                        />
+                    </a>
+                </Link>
             </div>
         </div>
     );

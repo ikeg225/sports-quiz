@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'header': ['Oswald']
+      'header': ['Oswald'],
+      'body': ['Verdana']
     }
   },
   plugins: [],
