@@ -7,12 +7,14 @@ import Image from 'next/image'
 import PortableText from "react-portable-text"
 import StartQuiz from "../../components/StartQuiz"
 import Footer from '../../components/Footer'
+import { getData } from '../api/mongo'
 
 interface Props {
     post: Post;
+    quizInfo: any;
 }
 
-function Post({ post }: Props) {
+function Post({ post, quizInfo }: Props) {
     return (
         <div className="max-w-7xl mx-auto h-full">
             <div className="md:mx-5 h-full" id="outer-container">
@@ -40,7 +42,7 @@ function Post({ post }: Props) {
                             <h1 className="text-2xl my-5 font-header uppercase text-center md:text-left">
                                 {post.title}
                             </h1>
-                            <StartQuiz url="nba.com" values={[13452, 54.78, 25]} />
+                            <StartQuiz url={post.id} values={[13452, 54.78, 25]} />
                             <PortableText 
                                 className=""
                                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
@@ -99,6 +101,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const query = `*[_type == "post" && slug.current == $slug][0] {
         _id,
+        id,
         slug{
         current
       },
@@ -117,9 +120,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }
     }
 
+    const quizInfo = await getData()
+
     return {
         props: {
-            post
+            post,
+            quizInfo
         },
         revalidate: 60
     }
