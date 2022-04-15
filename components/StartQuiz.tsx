@@ -1,3 +1,13 @@
+function type(value : number, index : number) {
+    if (index === 0) {
+        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    } else if (index === 1) {
+        return value + "%"
+    } else {
+        return value
+    }
+}
+
 export default function StartQuiz({ url, values } : any) {
     const under = ["plays", "avg. score", "# of Qs"]
 
@@ -12,7 +22,7 @@ export default function StartQuiz({ url, values } : any) {
                 {[0, 1, 2].map((value : number) => (
                     <div className="flex flex-col mx-auto font-body" key={value}>
                         <h1 className="text-white">
-                            {values[value]}
+                            {type(values[value], value)}
                         </h1>
                         <h1 className="text-gray-300">{under[value]}</h1>
                     </div>

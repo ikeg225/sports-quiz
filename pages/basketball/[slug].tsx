@@ -8,13 +8,30 @@ import PortableText from "react-portable-text"
 import StartQuiz from "../../components/StartQuiz"
 import Footer from '../../components/Footer'
 import { getData } from '../api/mongo'
+import SideBar from '../../components/SideBar'
 
 interface Props {
     post: Post;
     quizInfo: any;
 }
 
+const average = (array : number[], length : number) => array.reduce((a, b) => a + b) / length;
+const getAvg = (array : number[]) => {
+  let newArr : number[] = []
+  let summ = 0
+  array.forEach((x, i) => {
+    summ += x
+    newArr.push(x * i)
+  })
+  return (average(newArr, summ) / (array.length - 1)) * 100
+}
+
 function Post({ post, quizInfo }: Props) {
+    let id = post.id
+    let plays = quizInfo[id]["plays"]
+    let avgScore = getAvg(quizInfo[id]["scores"]).toFixed(2)
+    let lenQuiz = quizInfo[id]["scores"].length - 1
+
     return (
         <div className="max-w-7xl mx-auto h-full">
             <div className="md:mx-5 h-full" id="outer-container">
@@ -42,7 +59,7 @@ function Post({ post, quizInfo }: Props) {
                             <h1 className="text-2xl my-5 font-header uppercase text-center md:text-left">
                                 {post.title}
                             </h1>
-                            <StartQuiz url={post.id} values={[13452, 54.78, 25]} />
+                            <StartQuiz url={id} values={[plays, avgScore, lenQuiz]} />
                             <PortableText 
                                 className=""
                                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
@@ -62,11 +79,10 @@ function Post({ post, quizInfo }: Props) {
                                     )
                                 }}
                             />
-                            <StartQuiz url="nba.com" values={[13452, 54.78, 25]} />
                         </div>
                     </div>
                     <div>
-                        <h1>hi</h1>
+                        <SideBar />
                     </div>
                 </main>
                 <Footer />

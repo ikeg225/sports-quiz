@@ -34,9 +34,9 @@ function Header() {
             left: "0px"
         },
         bmMenu: {
-            "background-image": 'url(/images/kobe-menu.webp)',
-            "background-position": "85% 50%",
-            "background-size": "cover",
+            backgroundImage: 'url(/images/kobe-menu.webp)',
+            backgroundPosition: "85% 50%",
+            backgroundSize: "cover",
             padding: '2.5em 1em 0',
             fontSize: '1.15em',
             height: "100%"
@@ -50,9 +50,7 @@ function Header() {
         },
         bmOverlay: {
             top: "0px",
-            filter: "brightness(.5)",
-            "transition-timing-function": "cubic-bezier(0.4, 0, 0.2, 1)",
-            "transition-duration": "500ms"
+            filter: "brightness(.5)"
         }
     }
       
