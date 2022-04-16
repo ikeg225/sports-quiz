@@ -5,6 +5,8 @@ import { sanityClient } from '../sanity.js'
 import { Post } from '../typings'
 import Footer from '../components/Footer'
 import { getData } from './api/mongo'
+import SideBar from '../components/SideBar'
+import AllPosts from '../components/AllPosts'
 
 interface Props {
   posts: [Post];
@@ -28,6 +30,14 @@ export default function Home({ posts, quizInfo } : Props) {
         <Header />
         <main id="page-wrap">
           <PostGrid posts={posts} />
+          <div className="flex md:flex-row flex-col pt-16 m-5 md:m-0">
+            <div className="md:w-7/12">
+                <AllPosts posts={posts} quizInfo={quizInfo}/>
+            </div>
+            <div className="md:w-5/12">
+                <SideBar posts={posts} title="Quizzes For You"/>
+            </div>
+          </div>
         </main>
         <Footer />
       </div>
@@ -38,6 +48,7 @@ export default function Home({ posts, quizInfo } : Props) {
 export const getServerSideProps = async () => {
   const query = `*[_type == "post"] {
     _id,
+    id,
     title,
     mainImage,
     slug

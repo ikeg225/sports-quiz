@@ -12,26 +12,11 @@ import SideBar from '../../components/SideBar'
 
 interface Props {
     post: Post;
+    posts: any;
     quizInfo: any;
 }
 
-const average = (array : number[], length : number) => array.reduce((a, b) => a + b) / length;
-const getAvg = (array : number[]) => {
-  let newArr : number[] = []
-  let summ = 0
-  array.forEach((x, i) => {
-    summ += x
-    newArr.push(x * i)
-  })
-  return (average(newArr, summ) / (array.length - 1)) * 100
-}
-
-function Post({ post, quizInfo }: Props) {
-    let id = post.id
-    let plays = quizInfo[id]["plays"]
-    let avgScore = getAvg(quizInfo[id]["scores"]).toFixed(2)
-    let lenQuiz = quizInfo[id]["scores"].length - 1
-
+function Post({ post, posts, quizInfo }: Props) {
     return (
         <div className="max-w-7xl mx-auto h-full">
             <div className="md:mx-5 h-full" id="outer-container">
@@ -47,7 +32,7 @@ function Post({ post, quizInfo }: Props) {
                 </Head>
                 <Header />
                 <main id="page-wrap" className="flex flex-row md:mt-10 flex-wrap">
-                    <div className="w-full md:w-8/12">
+                    <div className="w-full md:w-7/12">
                         <Image 
                             className="cursor-pointer"
                             src={urlFor(post.mainImage).url()}
@@ -59,7 +44,7 @@ function Post({ post, quizInfo }: Props) {
                             <h1 className="text-2xl my-5 font-header uppercase text-center md:text-left">
                                 {post.title}
                             </h1>
-                            <StartQuiz url={id} values={[plays, avgScore, lenQuiz]} />
+                            <StartQuiz url={post.id} values={quizInfo[post.id]} />
                             <PortableText 
                                 className=""
                                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
@@ -70,10 +55,10 @@ function Post({ post, quizInfo }: Props) {
                                         <h1 className="text-xl my-3 font-header uppercase" {...props} />
                                     ),
                                     li: ({ children } : any) => (
-                                        <li className="lml-4 ist-disc">{children}</li>
+                                        <li className="list-inside list-disc">{children}</li>
                                     ),
                                     link: ({ href, children }: any) => (
-                                        <a href={href} className="text-blue-500">
+                                        <a href={href} className="text-gray-400">
                                             {children}
                                         </a>
                                     )
@@ -81,8 +66,8 @@ function Post({ post, quizInfo }: Props) {
                             />
                         </div>
                     </div>
-                    <div>
-                        <SideBar />
+                    <div className="w-full md:w-5/12 m-5 md:m-0">
+                        <SideBar posts={posts} title="Most Popular"/>
                     </div>
                 </main>
                 <Footer />
@@ -136,11 +121,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         }
     }
 
+    const query_posts = `*[_type == "post"] {
+        _id,
+        title,
+        mainImage,
+        slug
+      }`;
+    
+    const posts = await sanityClient.fetch(query_posts);
+
     const quizInfo = await getData()
 
     return {
         props: {
             post,
+            posts,
             quizInfo
         },
         revalidate: 60
