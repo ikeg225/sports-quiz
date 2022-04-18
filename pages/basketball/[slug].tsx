@@ -1,14 +1,14 @@
-import { sanityClient, urlFor } from "../../sanity"
 import Head from 'next/head'
-import Header from "../../components/Header"
-import { Post } from '../../typings'
-import { GetStaticProps } from "next"
 import Image from 'next/image'
 import PortableText from "react-portable-text"
+import Header from "../../components/Header"
+import SideBar from '../../components/SideBar'
 import StartQuiz from "../../components/StartQuiz"
 import Footer from '../../components/Footer'
+import { Post } from '../../typings'
 import { getData } from '../api/mongo'
-import SideBar from '../../components/SideBar'
+import { GetStaticProps } from "next"
+import { sanityClient, urlFor } from "../../sanity"
 
 interface Props {
     post: Post;
@@ -67,7 +67,7 @@ function Post({ post, posts, quizInfo }: Props) {
                         </div>
                     </div>
                     <div className="w-full md:w-5/12 m-5 md:m-0">
-                        <SideBar posts={posts} title="Most Popular"/>
+                        <SideBar posts={posts} />
                     </div>
                 </main>
                 <Footer />

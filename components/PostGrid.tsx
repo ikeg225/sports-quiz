@@ -1,7 +1,6 @@
+import Link from 'next/link'
 import { Post } from '../typings'
 import { urlFor } from '../sanity.js'
-import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 interface Props {

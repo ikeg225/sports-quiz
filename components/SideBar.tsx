@@ -1,11 +1,10 @@
-import { Post } from '../typings'
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { Post } from '../typings'
 import { urlFor } from '../sanity.js'
+import { useState, useEffect } from 'react'
 
 interface Props {
     posts: [Post];
-    title: string;
 }
 
 const getShuffledArr = (arr : number[]) => {
@@ -17,7 +16,7 @@ const getShuffledArr = (arr : number[]) => {
     return newArr
 };
 
-export default function SideBar({ posts, title }: Props) {
+export default function SideBar({ posts }: Props) {
     const [post, setPost] = useState([0])
 
     useEffect(() => {
@@ -31,7 +30,7 @@ export default function SideBar({ posts, title }: Props) {
     return (
         <div className="md:pl-10 md:sticky top-5">
             <h1 className="text-2xl mb-5 font-header uppercase">
-                {title}
+                Recommended
             </h1>
             <div className={`flex flex-col pb-1 w-full gap-2`}>
                 {post.slice(0, 3).map((post) => (

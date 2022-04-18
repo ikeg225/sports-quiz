@@ -1,4 +1,5 @@
 import QuizData from './QuizData'
+import getAvg from './GetAverage'
 
 export default function StartQuiz({ url, values } : any) {
     const under = ["plays", "avg. score", "# of Qs"]
@@ -10,7 +11,7 @@ export default function StartQuiz({ url, values } : any) {
                     Start Quiz
                 </button>
             </a>
-            <QuizData values={values} textColor={true}/>
+            <QuizData values={[values.plays, parseFloat(getAvg(values.scores).toFixed(2)), values.scores.length - 1]} textColor={true}/>
         </div>
     )
 }

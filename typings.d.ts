@@ -10,5 +10,7 @@ export interface Post {
     slug: {
         current: string
     },
-    body: object[]
+    body: object[],
+    publishedAt: string,
+    quiztype: string
 }

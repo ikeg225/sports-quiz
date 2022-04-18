@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import { scaleDown as Menu } from 'react-burger-menu'
 import { useRouter } from 'next/router'
+import { scaleDown as Menu } from 'react-burger-menu'
 
 function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
