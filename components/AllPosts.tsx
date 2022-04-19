@@ -33,7 +33,7 @@ export default function AllPosts({posts, quizInfo, search, sort} : Props) {
             })
         })
 
-        client.collections('quizzes').documents().import(quizJSON.map((x : any) => JSON.stringify(x)).join('\n'));
+        client.collections('quizzes').documents().import(quizJSON.map((x : any) => JSON.stringify(x)).join('\n'), {action: 'upsert'});
     }, []);    
 
     useEffect(() => {

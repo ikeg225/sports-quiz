@@ -34,10 +34,9 @@ let quizSchema = {
 
 //client.collections("quizzes").delete()
 
-client.collections().create(quizSchema)
-  .catch((error) => {
-  console.log(error)
-})
-
+//client.collections().create(quizSchema)
+//  .catch((error) => {
+//    console.log(error)
+//})
 
 export default client

@@ -28,7 +28,7 @@ export default function SideBar({ posts }: Props) {
     }, [])
 
     return (
-        <div className="md:pl-10 md:sticky top-5">
+        <div className="md:pl-10 md:sticky top-5 mt-10 md:mt-0">
             <h1 className="text-2xl mb-5 font-header uppercase">
                 Recommended
             </h1>
