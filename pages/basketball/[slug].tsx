@@ -21,7 +21,7 @@ function Post({ post, posts, quizInfo }: Props) {
         <div className="max-w-7xl mx-auto h-full">
             <div className="md:mx-5 h-full" id="outer-container">
                 <Head>
-                <title>Sports Quiz</title>
+                <title>{post.title}</title>
                 <link rel="icon" href="/favicon.ico" />
                 <link
                     rel="preload"
@@ -55,7 +55,7 @@ function Post({ post, posts, quizInfo }: Props) {
                                         <h1 className="text-xl my-3 font-header uppercase" {...props} />
                                     ),
                                     li: ({ children } : any) => (
-                                        <li className="list-inside list-disc">{children}</li>
+                                        <li className="list-disc ml-4">{children}</li>
                                     ),
                                     link: ({ href, children }: any) => (
                                         <a href={href} className="text-gray-400">

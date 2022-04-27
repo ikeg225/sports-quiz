@@ -7,7 +7,7 @@ export default function Blog() {
         <div className="max-w-7xl mx-auto h-full">
             <div className="md:mx-5 h-full" id="outer-container">
                 <Head>
-                <title>Sports Quiz - Blog</title>
+                <title>Blog</title>
                 <link rel="icon" href="/favicon.ico" />
                 <link
                     rel="preload"
