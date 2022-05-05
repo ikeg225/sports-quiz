@@ -4,8 +4,8 @@ import Footer from '../components/Footer'
 
 export default function PrivacyPolicy() {
     return (
-        <div className="max-w-7xl mx-auto h-full">
-            <div className="md:mx-5 h-full" id="outer-container">
+        <div className="max-w-7xl mx-auto">
+            <div className="md:mx-5">
                 <Head>
                 <title>Privacy Policy</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
                     />
                 </Head>
                 <Header />
-                <main id="page-wrap" className="md:px-0 px-5">
+                <main className="md:px-0 px-5">
                     <h1 className="text-3xl my-3 font-header uppercase pt-5">Privacy Policy</h1>
                     <p>At Sports Quiz, accessible from https://sportsquiz.org, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Sports Quiz and how we use it.</p>
                     <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>

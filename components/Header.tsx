@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { scaleDown as Menu } from 'react-burger-menu'
+import { slide as Menu } from 'react-burger-menu'
 
 function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -55,7 +55,7 @@ function Header() {
     }
       
     return (
-        <div className="md:border-b-4 border-black border-b-0">
+        <div className="md:border-b-4 border-black border-b-0 sticky top-0 z-50 md:relative">
             <header className="bg-black flex flex-row items-center justify-between px-5 py-2">
             <div className="flex md:hidden cursor-pointer bg-black text-white" 
                 onClick={() => setIsNavOpen((prev) => !prev)}>

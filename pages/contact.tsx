@@ -76,8 +76,8 @@ export default function Contact() {
     };
 
     return (
-        <div className="max-w-7xl mx-auto h-full">
-            <div className="md:mx-5 h-full" id="outer-container">
+        <div className="max-w-7xl mx-auto">
+            <div className="md:mx-5">
                 <Head>
                 <title>Contact Us</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -89,7 +89,7 @@ export default function Contact() {
                     />
                 </Head>
                 <Header />
-                <main id="page-wrap">
+                <main>
                 <form
                     onSubmit={handleSubmit}
                     className="flex flex-col px-8 py-8 bg-white"

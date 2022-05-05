@@ -22,7 +22,7 @@ export default function Home({ posts, quizInfo } : Props) {
   
   return (
     <div className="max-w-7xl mx-auto h-full">
-      <div className="md:mx-5 h-full" id="outer-container">
+      <div className="md:mx-5">
         <Head>
           <title>Sports Quiz</title>
           <link rel="icon" href="/favicon.ico" />
@@ -34,7 +34,7 @@ export default function Home({ posts, quizInfo } : Props) {
             />
         </Head>
         <Header />
-        <main id="page-wrap">
+        <main>
           <PostGrid posts={posts} />
           <div className="flex md:flex-row flex-col pt-16 m-5 md:m-0">
             <div className="md:w-7/12">
@@ -74,7 +74,7 @@ export default function Home({ posts, quizInfo } : Props) {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right font-body bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+                        <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right font-body bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
                           <div className="px-1 py-1">
                             <Menu.Item>
                               {({ active }) => (

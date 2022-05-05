@@ -9,8 +9,8 @@ import { sanityClient } from '../sanity.js'
 
 export default function Blog({ blogs, posts } : any) {
     return (
-        <div className="max-w-7xl mx-auto h-full">
-            <div className="md:mx-5 h-full" id="outer-container">
+        <div className="max-w-7xl mx-auto">
+            <div className="md:mx-5">
                 <Head>
                 <title>Blog</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -22,7 +22,7 @@ export default function Blog({ blogs, posts } : any) {
                     />
                 </Head>
                 <Header />
-                <main id="page-wrap">
+                <main>
                     <div className="flex flex-row pt-5 m-5 md:m-0">
                         <div className="flex flex-col gap-10 lg:w-8/12">
                             {blogs.map((blog : any)=> (

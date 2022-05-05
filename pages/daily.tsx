@@ -4,8 +4,8 @@ import Footer from '../components/Footer'
 
 export default function Daily() {
     return (
-        <div className="max-w-7xl mx-auto h-full">
-            <div className="md:mx-5 h-full" id="outer-container">
+        <div className="max-w-7xl mx-auto">
+            <div className="md:mx-5">
                 <Head>
                 <title>Daily Question</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -17,7 +17,7 @@ export default function Daily() {
                     />
                 </Head>
                 <Header />
-                <main id="page-wrap">
+                <main>
                     <h1>Daily</h1>
                 </main>
                 <Footer />

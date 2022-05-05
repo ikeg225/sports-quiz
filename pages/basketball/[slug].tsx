@@ -9,7 +9,6 @@ import { Post } from '../../typings'
 import { getData } from '../api/mongo'
 import { GetStaticProps } from "next"
 import { sanityClient, urlFor } from "../../sanity"
-import { mainModule } from 'process'
 
 interface Props {
     post: Post;
@@ -20,8 +19,8 @@ interface Props {
 
 function Post({ post, blog, posts, quizInfo }: Props) {
     return (
-        <div className="max-w-7xl mx-auto h-full">
-            <div className="md:mx-5 h-full" id="outer-container">
+        <div className="max-w-7xl mx-auto">
+            <div className="md:mx-5">
                 <Head>
                 <title>{post ? post.title : blog.name}</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -33,7 +32,7 @@ function Post({ post, blog, posts, quizInfo }: Props) {
                     />
                 </Head>
                 <Header />
-                <main id="page-wrap" className="flex flex-row md:mt-10 flex-wrap">
+                <main className="flex flex-row md:mt-10 flex-wrap">
                     <div className="w-full md:w-7/12">
                         <div className="text-[0px]">
                             <Image 
