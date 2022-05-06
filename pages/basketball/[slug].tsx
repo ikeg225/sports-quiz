@@ -29,7 +29,13 @@ function Post({ post, blog, posts, quizInfo }: Props) {
                     href="/fonts/Oswald-Bold.ttf"
                     as="font"
                     crossOrigin=""
-                    />
+                />
+                <meta property="og:url" content={`sports-quiz.buunxexvvp-ez94dr0r96mr.p.runcloud.link/${post ? post.slug.current : blog.slug.current}`} />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={post ? post.title : blog.name} />
+                <meta name="twitter:card" content="summary" />
+                <meta property="og:description" content={post ? post.meta : blog.meta} />
+                <meta property="og:image" content={urlFor(post ? post.mainImage : blog.image).url()} />
                 </Head>
                 <Header />
                 <main className="flex flex-row md:mt-10 flex-wrap">
@@ -113,7 +119,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
         mainImage,
         title,
-      body
+      body,
+      meta
       }`
 
     let post = await sanityClient.fetch(query, {
@@ -140,7 +147,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
         image,
         name,
-      body
+      body,
+      meta
       }`
 
     let blog = await sanityClient.fetch(queryBlog, {

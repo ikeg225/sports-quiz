@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
             <div className="md:mx-5">
                 <Head>
                 <title>Privacy Policy</title>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/images/favicon.ico" />
                 <link
                     rel="preload"
                     href="/fonts/Oswald-Bold.ttf"

@@ -25,13 +25,19 @@ export default function Home({ posts, quizInfo } : Props) {
       <div className="md:mx-5">
         <Head>
           <title>Sports Quiz</title>
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/images/favicon.ico" />
           <link
               rel="preload"
               href="/fonts/Oswald-Bold.ttf"
               as="font"
               crossOrigin=""
             />
+            <meta property="og:url" content="sports-quiz.buunxexvvp-ez94dr0r96mr.p.runcloud.link/" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="Sports Quiz" />
+            <meta name="twitter:card" content="summary" />
+            <meta property="og:description" content="Sports Quiz. Come on in and test your sports knowledge with our trivia quizzes or play fun and interactive personality quizzes!" />
+            <meta property="og:image" content={"/images/Sports-Quiz-Preview.webp"} />
         </Head>
         <Header />
         <main>

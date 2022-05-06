@@ -12,5 +12,6 @@ export interface Post {
     },
     body: object[],
     publishedAt: string,
-    quiztype: string
+    quiztype: string,
+    meta: string
 }

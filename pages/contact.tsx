@@ -80,7 +80,7 @@ export default function Contact() {
             <div className="md:mx-5">
                 <Head>
                 <title>Contact Us</title>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/images/favicon.ico" />
                 <link
                     rel="preload"
                     href="/fonts/Oswald-Bold.ttf"

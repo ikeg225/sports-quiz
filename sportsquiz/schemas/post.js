@@ -9,6 +9,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'meta',
+      title: 'Meta',
+      type: 'string',
+    },
+    {
       name: 'id',
       title: 'ID',
       type: 'string',
