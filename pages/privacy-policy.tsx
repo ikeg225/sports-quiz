@@ -15,6 +15,14 @@ export default function PrivacyPolicy() {
                     as="font"
                     crossOrigin=""
                     />
+                <meta name="title" key="title" content="Sports Quiz - Privacy Policy" />
+                <meta name="description" key="description" content="Sports Quiz. One of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Sports Quiz and how we use it..." />
+                <meta property="og:url" content="sports-quiz.buunxexvvp-ez94dr0r96mr.p.runcloud.link/privacy-policy" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Sports Quiz - Privacy Policy" />
+                <meta name="twitter:card" content="summary" />
+                <meta property="og:description" content="Sports Quiz. One of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Sports Quiz and how we use it..." />
+                <meta property="og:image" content={"/images/Sports-Quiz-Preview.webp"} />
                 </Head>
                 <Header />
                 <main className="md:px-0 px-5">

@@ -15,6 +15,14 @@ export default function TermsAndConditions() {
                     as="font"
                     crossOrigin=""
                     />
+                <meta name="title" key="title" content="Sports Quiz - Terms and Conditions" />
+                <meta name="description" key="description" content="These terms and conditions outline the rules and regulations for the use of Sports Quiz's Website. By accessing this website we assume you accept these terms and conditions. Do not continue to use Sports Quiz if you do not agree to take all of the terms and conditions stated on this page..." />
+                <meta property="og:url" content="sports-quiz.buunxexvvp-ez94dr0r96mr.p.runcloud.link/terms-and-conditions" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Sports Quiz - Terms and Conditions" />
+                <meta name="twitter:card" content="summary" />
+                <meta property="og:description" content="These terms and conditions outline the rules and regulations for the use of Sports Quiz's Website. By accessing this website we assume you accept these terms and conditions. Do not continue to use Sports Quiz if you do not agree to take all of the terms and conditions stated on this page..." />
+                <meta property="og:image" content={"/images/Sports-Quiz-Preview.webp"} />
                 </Head>
                 <Header />
                 <main className="md:px-0 px-5">
