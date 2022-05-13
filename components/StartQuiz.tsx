@@ -1,7 +1,7 @@
 import QuizData from './QuizData'
 import getAvg from './GetAverage'
 
-export default function StartQuiz({ url, values, outbound } : any) {
+export default function StartQuiz({ url, values, outbound, quizType } : any) {
     return (
         <div className="bg-black text-center rounded">
             <a href={outbound ? outbound : "https://quizzes.sportsquiz.org/?search=" + url}>
@@ -9,7 +9,7 @@ export default function StartQuiz({ url, values, outbound } : any) {
                     Start Quiz
                 </button>
             </a>
-            <QuizData values={[values.plays, parseFloat(getAvg(values.scores).toFixed(2)), values.scores.length - 1]} textColor={true}/>
+            <QuizData values={[values.plays, parseFloat(getAvg(values.scores).toFixed(2)), values.scores.length - 1]} textColor={true} quizType={quizType}/>
         </div>
     )
 }

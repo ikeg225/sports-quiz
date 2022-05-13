@@ -66,7 +66,7 @@ export default function AllPosts({posts, quizInfo, search, sort} : Props) {
                         <h1 className="font-header uppercase text-center text-xl">
                             {post.document.title}
                         </h1>
-                        <QuizData values={[post.document.plays, post.document.avgScore, post.document.numQuestions]} textColor={false}/>
+                        <QuizData values={[post.document.plays, post.document.avgScore, post.document.numQuestions]} textColor={false} quizType={post.document.quizType}/>
                     </div>
                 </Link>
             ))}

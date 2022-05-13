@@ -23,7 +23,7 @@ function Post({ post, blog, posts, quizInfo }: Props) {
             <div className="md:mx-5">
                 <Head>
                 <title>{post ? post.title : blog.name}</title>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/images/favicon.ico" />
                 <link
                     rel="preload"
                     href="/fonts/Oswald-Bold.ttf"
@@ -54,7 +54,7 @@ function Post({ post, blog, posts, quizInfo }: Props) {
                             <h1 className="text-2xl my-5 font-header uppercase text-center md:text-left">
                                 {post ? post.title : blog.name}
                             </h1>
-                            {post && <StartQuiz url={post.id} values={quizInfo[post.id]} outbound={post.outbound}/>}
+                            {post && <StartQuiz url={post.id} values={quizInfo[post.id]} outbound={post.outbound} quizType={post.quiztype}/>}
                             <PortableText 
                                 className=""
                                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
@@ -117,6 +117,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         _id,
         id,
         outbound,
+        quiztype,
         slug{
         current
       },

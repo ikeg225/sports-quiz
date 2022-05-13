@@ -8,10 +8,8 @@ function type(value : number, index : number) {
     }
 }
 
-export default function QuizData({ values, textColor } : any) {
+export default function QuizData({ values, textColor, quizType } : any) {
     const under = ["plays", "avg. score", "# of Qs"]
-
-    console.log(values)
 
     return (
         <div className="flex flex-row mx-auto p-5 text-center">
@@ -21,7 +19,7 @@ export default function QuizData({ values, textColor } : any) {
                 </h1>
                 <h1 className="text-gray-300">{under[0]}</h1>
             </div>
-            {values[1] !== 0 && values[1] && <div className="flex flex-col mx-auto font-body" key={1}>
+            {quizType === "trivia" && <div className="flex flex-col mx-auto font-body" key={1}>
                 <h1 className={textColor ? "text-white" : "text-black"}>
                     {type(values[1], 1)}
                 </h1>
