@@ -11,16 +11,28 @@ function type(value : number, index : number) {
 export default function QuizData({ values, textColor } : any) {
     const under = ["plays", "avg. score", "# of Qs"]
 
+    console.log(values)
+
     return (
         <div className="flex flex-row mx-auto p-5 text-center">
-            {[0, 1, 2].map((value : number) => (
-                <div className="flex flex-col mx-auto font-body" key={value}>
-                    <h1 className={textColor ? "text-white" : "text-black"}>
-                        {type(values[value], value)}
-                    </h1>
-                    <h1 className="text-gray-300">{under[value]}</h1>
-                </div>
-            ))}
+            <div className="flex flex-col mx-auto font-body" key={0}>
+                <h1 className={textColor ? "text-white" : "text-black"}>
+                    {type(values[0], 0)}
+                </h1>
+                <h1 className="text-gray-300">{under[0]}</h1>
+            </div>
+            {values[1] !== 0 && values[1] && <div className="flex flex-col mx-auto font-body" key={1}>
+                <h1 className={textColor ? "text-white" : "text-black"}>
+                    {type(values[1], 1)}
+                </h1>
+                <h1 className="text-gray-300">{under[1]}</h1>
+            </div>}
+            <div className="flex flex-col mx-auto font-body" key={2}>
+                <h1 className={textColor ? "text-white" : "text-black"}>
+                    {type(values[2], 2)}
+                </h1>
+                <h1 className="text-gray-300">{under[2]}</h1>
+            </div>
         </div>
     )
 }

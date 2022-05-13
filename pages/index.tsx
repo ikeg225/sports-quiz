@@ -143,7 +143,8 @@ export const getServerSideProps = async () => {
   quiztype,
     title,
     mainImage,
-    slug
+    slug,
+    outbound
   }`;
 
   const posts = await sanityClient.fetch(query);

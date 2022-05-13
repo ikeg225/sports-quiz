@@ -25,7 +25,7 @@ export default function AllPosts({posts, quizInfo, search, sort} : Props) {
                 'title': quiz.title,
                 'created': new Date(quiz.publishedAt).getTime(),
                 'plays': quizInfo[quiz.id].plays,
-                'avgScore': parseFloat(getAvg(quizInfo[quiz.id].scores).toFixed(2)),
+                'avgScore': quizInfo[quiz.id].scores.some((item : any) => item !== 0) ? parseFloat(getAvg(quizInfo[quiz.id].scores).toFixed(2)) : 0,
                 'numQuestions': quizInfo[quiz.id].scores.length - 1,
                 'quizType': quiz.quiztype,
                 'slug': quiz.slug.current,

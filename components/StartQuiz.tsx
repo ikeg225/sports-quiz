@@ -1,12 +1,10 @@
 import QuizData from './QuizData'
 import getAvg from './GetAverage'
 
-export default function StartQuiz({ url, values } : any) {
-    const under = ["plays", "avg. score", "# of Qs"]
-
+export default function StartQuiz({ url, values, outbound } : any) {
     return (
         <div className="bg-black text-center rounded">
-            <a href={"https://quizzes.sportsquiz.org/?search=" + url}>
+            <a href={outbound ? outbound : "https://quizzes.sportsquiz.org/?search=" + url}>
                 <button className="bg-white p-3 m-3 uppercase font-header">
                     Start Quiz
                 </button>

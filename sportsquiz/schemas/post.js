@@ -33,6 +33,11 @@ export default {
       },
     },
     {
+      name: 'outbound',
+      title: 'Outbound',
+      type: 'string',
+    },
+    {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',

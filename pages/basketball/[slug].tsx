@@ -54,7 +54,7 @@ function Post({ post, blog, posts, quizInfo }: Props) {
                             <h1 className="text-2xl my-5 font-header uppercase text-center md:text-left">
                                 {post ? post.title : blog.name}
                             </h1>
-                            {post && <StartQuiz url={post.id} values={quizInfo[post.id]} />}
+                            {post && <StartQuiz url={post.id} values={quizInfo[post.id]} outbound={post.outbound}/>}
                             <PortableText 
                                 className=""
                                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
@@ -116,6 +116,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const query = `*[_type == "post" && slug.current == $slug][0] {
         _id,
         id,
+        outbound,
         slug{
         current
       },
