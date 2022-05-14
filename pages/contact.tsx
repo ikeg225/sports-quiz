@@ -100,9 +100,9 @@ export default function Contact() {
                 <main>
                 <form
                     onSubmit={handleSubmit}
-                    className="flex flex-col px-8 py-8 bg-white"
+                    className="flex flex-col px-8 py-8 bg-white text-left"
                     >
-                    <h1 className="text-2xl font-header uppercase">
+                    <h1 className="text-2xl font-header uppercase text-center">
                         Contact Us
                     </h1>
 

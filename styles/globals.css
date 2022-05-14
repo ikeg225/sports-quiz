@@ -24,3 +24,328 @@ p {
     font-family: Verdana;
     padding: 10px 0;
 }
+
+/* * * * * * * * * * * * * *
+ * For Daily Question Page *
+ * * * * * * * * * * * * * */
+
+:root {
+    --quiz-content-width: 700px;
+    --global-green: #10C69B;
+    --global-grey: #C4C4C4;
+    --global-red: #9F2452;
+    --header-option-button-explain: 22px;
+    --question-explainHead: 35px;
+    --border-width: 10px;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.options {
+    display:grid;
+    grid-template-columns: calc(var(--quiz-content-width) / 2) calc(var(--quiz-content-width) / 2);
+    gap: 20px;
+    justify-items: center;
+}
+
+.options label {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--header-option-button-explain);
+    text-align: left;
+}
+
+.selected {
+    border: 2px solid white;
+    color: white;
+    transition: 0.5s;
+    position: relative;
+    min-width: calc((var(--quiz-content-width) / 2) - 44px);
+    max-width: calc((var(--quiz-content-width) / 2) - 44px);
+}
+
+.selected.unselected:after {
+    content: '\A';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    top: 0; 
+    bottom: 0;
+    left: 0; 
+    width: inherit;
+    -webkit-animation: filler 2s ease-in-out;
+    -moz-animation: filler 2s ease-in-out;
+    animation: filler 2s ease-in-out;
+}
+
+.selected:hover {
+    border: 2px solid var(--global-grey);
+    color: var(--global-grey);
+    transition: 0.5s;
+}
+
+.selected.active {
+    border: 2px solid var(--global-green);
+    color: var(--global-green);
+    transition: 0.5s;
+    position: relative;
+}
+
+.selected.active.correct:after {
+    content: '\A';
+    position: absolute;
+    background: rgba(16, 198, 155, 0.3);
+    top: 0; 
+    bottom: 0;
+    left: 0; 
+    width: inherit;
+    -webkit-animation: filler 2s ease-in-out;
+    -moz-animation: filler 2s ease-in-out;
+    animation: filler 2s ease-in-out;
+}
+
+.selected.wrong {
+    border: 2px solid var(--global-red);
+    color: var(--global-red);
+    transition: 0.5s;
+    position: relative;
+}
+
+.selected.wrong:after {
+    content: '\A';
+    position: absolute;
+    background: rgb(159, 36, 82, 0.3);
+    top: 0; 
+    bottom: 0;
+    left: 0; 
+    width: inherit;
+    -webkit-animation: filler 2s ease-in-out;
+    -moz-animation: filler 2s ease-in-out;
+    animation: filler 2s ease-in-out;
+}
+
+input[type="radio"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    font: inherit;
+    color: black;
+    width: 1.15em;
+    height: 1.15em;
+    border-radius: 50%;
+    background-color: black;
+    display: grid;
+    place-content: center;
+}
+
+.selected.active input[type="radio"] {
+    border: 0.15em solid var(--global-green);
+    transition: 0.5s;
+}
+
+.selected.active input[type="radio"]:hover {
+    border: 0.15em solid var(--global-green);
+}
+
+.selected input[type="radio"] {
+    border: 0.15em solid white;
+    transition: 0.5s;
+    flex-shrink: 0;
+}
+
+.selected input[type="radio"]:hover {
+    border: 0.15em solid var(--global-grey);
+    transition: 0.5s;
+}
+
+.selected.wrong input[type="radio"] {
+    border: 0.15em solid var(--global-red);
+    transition: 0.5s;
+}
+
+input[type="radio"]::before {
+    content: "";
+    min-width: 0.65em;
+    min-height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+}
+
+.selected input[type="radio"]::before {
+    box-shadow: inset 1em 1em var(--global-green);
+}
+
+.selected.wrong input[type="radio"]::before {
+    box-shadow: inset 1em 1em var(--global-red);
+    transition: 0.5s;
+}
+
+  
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+@-webkit-keyframes filler {
+    0% {
+        width:0;
+    }
+}
+@-moz-keyframes filler {
+    0% {
+        width:0;
+    }
+}
+@keyframes filler {
+    0% {
+        width:0;
+    }
+}
+
+.fixed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.nextQuestion {
+    text-align: center;
+}
+
+.explain {
+    color: white;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+}
+
+.explain.active {
+    visibility: visible;
+    height: auto;
+    opacity: 1;
+    transition: opacity 2s 0.5s;
+}
+
+.explain.active h2 {
+    display: block;
+}
+
+.explain h2 {
+    display: none;
+}
+
+.next {
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    font-size: var(--header-option-button-explain);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 5px 30px;
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.next.active {
+    visibility: visible;
+    height: auto;
+    opacity: 1;
+    transition: opacity 2s;
+}
+
+.none {
+    visibility: hidden;
+    position: absolute;
+    opacity: 0;
+    height: 0;
+}
+
+.next.active:hover{
+    background-color: black;
+    color: white;
+    transition: 1s;
+    cursor: pointer;
+}
+
+form {
+    text-align: center;
+}
+
+.explainHeader {
+    font-size: var(--question-explainHead);
+}
+
+.explainContent {
+    font-size: var(--header-option-button-explain);
+}
+
+@media screen and (max-width: 1100px) {
+    :root {
+      --quiz-content-width: 500px;
+      --header-option-button-explain: 16px;
+      --question-explainHead: 26px;
+      --border-width: 8px;
+    }
+  }
+  
+  @media screen and (max-width: 815px) {
+    :root {
+      --quiz-content-width: 300px;
+      --header-option-button-explain: 14px;
+      --question-explainHead: 22px;
+      --border-width: 5px;
+    }
+    
+    .options {
+        grid-template-columns: var(--quiz-content-width);
+    }    
+
+    .selected {
+        min-width: calc(var(--quiz-content-width) - 44px);
+        max-width: calc(var(--quiz-content-width) - 44px);
+    }
+
+    form {
+        padding-top: 30px;
+    }
+
+    .explain.active {
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .explainContent, .explainHeader {
+        width: var(--quiz-content-width);
+    }
+  }
+  
+  @media screen and (max-width: 375px) {
+    :root {
+      --quiz-content-width: 275px;
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    :root {
+      --quiz-content-width: 250px;
+      --header-option-button-explain: 12px;
+      --question-explainHead: 20px;
+    }
+  }
+  

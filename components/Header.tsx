@@ -69,8 +69,8 @@ function Header() {
                         <Link href='/contact'>
                             <h1 className={router.pathname == "/contact" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Contact Us</h1>
                         </Link>
-                        <Link href='/daily'>
-                            <h1 className={router.pathname == "/daily" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Daily Question</h1>
+                        <Link href='/trivia-questions'>
+                            <h1 className={router.pathname == "/trivia-questions" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Trivia Question</h1>
                         </Link>
                     </Menu>
                 </div>
@@ -99,12 +99,12 @@ function Header() {
                     </Link>
                 </div>
                 <div className="-mb-1.5 max-w-[10%] transition duration-500 hover:brightness-75 hover:ease-in-out">
-                    <Link href='/daily'>
+                    <Link href='/trivia-questions'>
                         <a>
                             <Image 
                                 className="cursor-pointer" 
-                                src="/images/daily-icon.png" 
-                                alt="Daily Sports Quiz Icon" 
+                                src="/images/trivia-question.png" 
+                                alt="Trivia Question Sports Quiz Icon" 
                                 width={30} height={30}
                             />
                         </a>
