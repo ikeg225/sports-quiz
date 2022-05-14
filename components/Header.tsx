@@ -70,7 +70,7 @@ function Header() {
                             <h1 className={router.pathname == "/contact" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Contact Us</h1>
                         </Link>
                         <Link href='/trivia-questions'>
-                            <h1 className={router.pathname == "/trivia-questions" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Trivia Question</h1>
+                            <h1 className={router.pathname == "/trivia-questions" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Trivia Questions</h1>
                         </Link>
                     </Menu>
                 </div>

@@ -16,10 +16,11 @@ export default function TriviaQuestions({ quizInfo } : any) {
     const [selected, setSelected] = useState("")
     const [none, setNone] = useState(true)
     const [exp, setExp] = useState(false)   
+    const [newQ, setNewQ] = useState(0)  
 
     useEffect(() => {
         setRandomQuestion(quizInfo[Math.floor(Math.random()*quizInfo.length)])
-    }, [])
+    }, [newQ])
 
     function selectedOption(event : any) {
         setSelected(event.target.value)
@@ -61,6 +62,13 @@ export default function TriviaQuestions({ quizInfo } : any) {
         event.preventDefault()
         setNone(false)
         setExp(true)
+    }
+
+    function nextQuestion() {
+        setExp(false)
+        setSelected("")
+        setNone(true)
+        setNewQ(1 - newQ)
     }
 
     return (
@@ -107,6 +115,9 @@ export default function TriviaQuestions({ quizInfo } : any) {
                             </div>
                             <button className={none ? "next" : (exp ? "none" : "next active")} type="submit">Submit</button>
                         </form>
+                        <div className="nextQuestion">
+                            <button className={exp ? "next active" : "none"} onClick={nextQuestion}>Next</button>
+                        </div>
                         {randomQuestion.desc.length !== 0 && <div className={exp ? "explain active" : "explain"}>
                             <h2 className="explainHeader text-white p-5">Explanation:</h2>
                             <h2 className="explainContent text-white text-left px-5 md:px-10" dangerouslySetInnerHTML={{ __html:  randomQuestion.desc }} />
