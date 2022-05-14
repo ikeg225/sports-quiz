@@ -85,7 +85,7 @@ export default function TriviaQuestions({ quizInfo } : any) {
                     />
                 <meta name="title" key="title" content="Sports Quiz - Trivia Questions" />
                 <meta name="description" key="description" content="Sports Quiz. The trivia questions page has a new sports related question every page reload! Come on in and test your knowledge!" />
-                <meta property="og:url" content="sports-quiz.buunxexvvp-ez94dr0r96mr.p.runcloud.link/trivia-questions" />
+                <meta property="og:url" content="sportsquiz.org/trivia-questions" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Sports Quiz - Trivia Questions" />
                 <meta name="twitter:card" content="summary" />
@@ -105,7 +105,7 @@ export default function TriviaQuestions({ quizInfo } : any) {
                             <div className="question font-body">
                                 <div className="options">
                                     {randomQuestion.options.map(option => 
-                                        <label key={option[0]} className={buttonClass(option[0])} style={{width: perc[option[0]] + "%"}}>
+                                        <label key={randomQuestion.title + option[0]} className={buttonClass(option[0])} style={{width: perc[option[0]] + "%"}}>
                                             <input type="radio" name="question" value={option[0]}
                                             onClick={selectedOption} disabled={exp ? true : false}/> 
                                             {option[0]}

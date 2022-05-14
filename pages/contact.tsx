@@ -90,7 +90,7 @@ export default function Contact() {
                 </Head>
                 <meta name="title" key="title" content="Sports Quiz - Contact Us" />
                 <meta name="description" key="description" content="Sports Quiz. Contact us about any inquiries you might have! Looking forward to your message!" />
-                <meta property="og:url" content="sports-quiz.buunxexvvp-ez94dr0r96mr.p.runcloud.link/contact" />
+                <meta property="og:url" content="sportsquiz.org/contact" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Sports Quiz - Contact Us" />
                 <meta name="twitter:card" content="summary" />

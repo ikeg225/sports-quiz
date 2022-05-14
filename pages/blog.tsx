@@ -22,7 +22,7 @@ export default function Blog({ blogs, posts } : any) {
                     />
                 <meta name="title" key="title" content="Sports Quiz - Blog" />
                 <meta name="description" key="description" content="Sports Quiz. Come on in and test your sports knowledge with our trivia quizzes or play fun and interactive personality quizzes!" />
-                <meta property="og:url" content="sports-quiz.buunxexvvp-ez94dr0r96mr.p.runcloud.link/blog" />
+                <meta property="og:url" content="sportsquiz.org/blog" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Sports Quiz - Blog" />
                 <meta name="twitter:card" content="summary" />

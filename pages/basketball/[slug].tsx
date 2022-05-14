@@ -32,7 +32,7 @@ function Post({ post, blog, posts, quizInfo }: Props) {
                 />
                 <meta name="title" key="title" content={post ? post.title : blog.name} />
                 <meta name="description" key="description" content={post ? post.meta : blog.meta} />
-                <meta property="og:url" content={`sports-quiz.buunxexvvp-ez94dr0r96mr.p.runcloud.link/${post ? post.slug.current : blog.slug.current}`} />
+                <meta property="og:url" content={`sportsquiz.org/${post ? post.slug.current : blog.slug.current}`} />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content={post ? post.title : blog.name} />
                 <meta name="twitter:card" content="summary" />
