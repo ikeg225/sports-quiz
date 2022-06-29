@@ -9,11 +9,10 @@ const Typesense = require('typesense')
 
 let client = new Typesense.Client({
   'nodes': [{
-    'host': 'localhost', // For Typesense Cloud use xxx.a1.typesense.net
-    'port': '8108',      // For Typesense Cloud use 443
-    'protocol': 'http'   // For Typesense Cloud use https
+    'host': process.env.TYPESENSE_HOST,
+    'protocol': process.env.TYPESENSE_PROTOCOL
   }],
-  'apiKey': 'xyz',
+  'apiKey': process.env.TYPESENSE,
   'connectionTimeoutSeconds': 2
 })
 
