@@ -1,0 +1,33 @@
+.content h1,
+.content h2,
+.content h3 {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem; 
+    font-family: 'Oswald';
+    text-transform: uppercase;
+}
+
+.content h1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.content h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.content h3 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: #a9acb0;
+}
+
+@media (min-width: 768px) {
+    .content h1 {
+        text-align: left;
+    }
+}

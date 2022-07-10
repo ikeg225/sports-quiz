@@ -9,10 +9,10 @@ const Typesense = require('typesense')
 
 let client = new Typesense.Client({
   'nodes': [{
-    'host': process.env.TYPESENSE_HOST,
-    'protocol': process.env.TYPESENSE_PROTOCOL
+    'host': 'typesense.sportsquiz.org',
+    'protocol': 'https'
   }],
-  'apiKey': process.env.TYPESENSE,
+  'apiKey': 'Q35ayuJJU5sVgPWLplqeGMG5BIET0oaz',
   'connectionTimeoutSeconds': 2
 })
 

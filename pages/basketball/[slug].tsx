@@ -6,23 +6,27 @@ import SideBar from '../../components/SideBar'
 import StartQuiz from "../../components/StartQuiz"
 import Footer from '../../components/Footer'
 import { Post } from '../../typings'
-import { getData } from '../api/mongo'
+import { getData, articleExists, getArticle } from '../api/mongo'
 import { GetStaticProps } from "next"
 import { sanityClient, urlFor } from "../../sanity"
+import styles from '../../styles/basketball.module.css'
 
 interface Props {
     post: Post;
     blog: any;
     posts: any;
     quizInfo: any;
+    slug: any;
+    qanda: any;
 }
 
-function Post({ post, blog, posts, quizInfo }: Props) {
+function Post({ post, blog, posts, quizInfo, slug, qanda }: Props) {
+    const qandaExists = Object.keys(qanda).length !== 0
     return (
         <div className="max-w-7xl mx-auto">
             <div className="md:mx-5">
                 <Head>
-                <title>{post ? post.title : blog.name}</title>
+                <title>{post ? post.title : (qandaExists ? qanda.title : blog.name)}</title>
                 <link rel="icon" href="/images/favicon.ico" />
                 <link
                     rel="preload"
@@ -30,32 +34,32 @@ function Post({ post, blog, posts, quizInfo }: Props) {
                     as="font"
                     crossOrigin=""
                 />
-                <meta name="title" key="title" content={post ? post.title : blog.name} />
-                <meta name="description" key="description" content={post ? post.meta : blog.meta} />
-                <meta property="og:url" content={`sportsquiz.org/${post ? post.slug.current : blog.slug.current}`} />
+                <meta name="title" key="title" content={post ? post.title : (qandaExists ? qanda.title : blog.name)} />
+                <meta name="description" key="description" content={post ? post.meta : (blog ? blog.meta : "")} />
+                <meta property="og:url" content={`sportsquiz.org/basketball/${slug}`} />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content={post ? post.title : blog.name} />
+                <meta property="og:title" content={post ? post.title : (qandaExists ? qanda.title : blog.name)} />
                 <meta name="twitter:card" content="summary" />
-                <meta property="og:description" content={post ? post.meta : blog.meta} />
-                <meta property="og:image" content={urlFor(post ? post.mainImage : blog.image).url()} />
+                <meta property="og:description" content={post ? post.meta : (blog ? blog.meta : "")} />
+                <meta property="og:image" content={qandaExists ? "/images/Sports-Quiz-Preview.webp" : urlFor(post ? post.mainImage : blog.image).url()} />
                 </Head>
                 <Header />
                 <main className="flex flex-row md:mt-10 flex-wrap">
                     <div className="w-full md:w-7/12">
-                        <div className="text-[0px]">
+                        {!qandaExists && <div className="text-[0px]">
                             <Image 
                                 src={urlFor(post ? post.mainImage : blog.image).url()}
-                                alt={post ? post.title : blog.name}
+                                alt={post ? post.title : (qandaExists ? qanda.title : blog.name)}
                                 height={675}
                                 width={1200}
                             />
-                        </div>
+                        </div>}
                         <div className="m-5 md:m-0">
-                            <h1 className="text-2xl my-5 font-header uppercase text-center md:text-left">
+                            {!qandaExists && <h1 className="text-2xl my-5 font-header uppercase text-center md:text-left">
                                 {post ? post.title : blog.name}
-                            </h1>
+                            </h1>}
                             {post && <StartQuiz url={post.id} values={quizInfo[post.id]} outbound={post.outbound} quizType={post.quiztype}/>}
-                            <PortableText 
+                            {!qandaExists && <PortableText 
                                 className=""
                                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
                                 projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
@@ -76,7 +80,8 @@ function Post({ post, blog, posts, quizInfo }: Props) {
                                         </a>
                                     )
                                 }}
-                            />
+                            />}
+                            {qandaExists && <div className={styles.content} dangerouslySetInnerHTML={{__html: qanda.content}} />}
                         </div>
                     </div>
                     <div className="w-full md:w-5/12 mx-5 md:m-0">
@@ -113,6 +118,8 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const slug = params?.slug
+
     const query = `*[_type == "post" && slug.current == $slug][0] {
         _id,
         id,
@@ -128,7 +135,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       }`
 
     let post = await sanityClient.fetch(query, {
-        slug: params?.slug
+        slug: slug
     })
 
     if (!post) {
@@ -156,7 +163,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       }`
 
     let blog = await sanityClient.fetch(queryBlog, {
-        slug: params?.slug
+        slug: slug
     })
 
     if (!blog) {
@@ -165,12 +172,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     const quizInfo = await getData()
 
+    let qanda = {}
+    const exists = await articleExists(slug)
+    if (exists) {
+        qanda = await getArticle(slug)
+    }
+
     return {
         props: {
             post,
             blog,
             posts,
-            quizInfo
+            quizInfo,
+            slug,
+            qanda
         },
         revalidate: 60
     }
