@@ -7,12 +7,12 @@ import SideBar from '../components/SideBar'
 import { urlFor } from '../sanity.js'
 import { sanityClient } from '../sanity.js'
 
-export default function Blog({ blogs, posts } : any) {
+export default function Basketball({ blogs, posts } : any) {
     return (
         <div className="max-w-7xl mx-auto">
             <div className="md:mx-5">
                 <Head>
-                <title>Blog</title>
+                <title>Basketball</title>
                 <link rel="icon" href="/images/favicon.ico" />
                 <link
                     rel="preload"
@@ -20,11 +20,11 @@ export default function Blog({ blogs, posts } : any) {
                     as="font"
                     crossOrigin=""
                     />
-                <meta name="title" key="title" content="Sports Quiz - Blog" />
+                <meta name="title" key="title" content="Sports Quiz - Basketball" />
                 <meta name="description" key="description" content="Sports Quiz. Come on in and test your sports knowledge with our trivia quizzes or play fun and interactive personality quizzes!" />
-                <meta property="og:url" content="sportsquiz.org/blog" />
+                <meta property="og:url" content="sportsquiz.org/basketball" />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="Sports Quiz - Blog" />
+                <meta property="og:title" content="Sports Quiz - Basketball" />
                 <meta name="twitter:card" content="summary" />
                 <meta property="og:description" content="Sports Quiz. Come on in and test your sports knowledge with our trivia quizzes or play fun and interactive personality quizzes!" />
                 <meta property="og:image" content={"/images/Sports-Quiz-Preview.webp"} />

@@ -61,33 +61,47 @@ function Header() {
                 onClick={() => setIsNavOpen((prev) => !prev)}>
                     <Menu styles={ styles } className="font-header uppercase leading-10 text-right" width={ 290 } pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
                         <Link href='/'>
-                            <h1 className={router.pathname == "/" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Home</h1>
+                            <a href='/'>
+                                <h1 className={router.pathname == "/" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Home</h1>
+                            </a>
                         </Link>
-                        <Link href='/blog'>
-                            <h1 className={router.pathname == "/blog" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Blog</h1>
+                        <Link href='/basketball'>
+                            <a href='/basketball'>
+                                <h1 className={router.pathname == "/basketball" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Basketball</h1>
+                            </a>
                         </Link>
                         <Link href='/contact'>
-                            <h1 className={router.pathname == "/contact" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Contact Us</h1>
+                            <a href='/contact'>
+                                <h1 className={router.pathname == "/contact" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Contact Us</h1>
+                            </a>
                         </Link>
                         <Link href='/trivia-questions'>
-                            <h1 className={router.pathname == "/trivia-questions" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Trivia Questions</h1>
+                            <a href='/trivia-questions'>
+                                <h1 className={router.pathname == "/trivia-questions" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Trivia Questions</h1>
+                            </a>
                         </Link>
                     </Menu>
                 </div>
                 <div className="hidden font-header uppercase text-white md:flex flex-row space-x-5">
                     <Link href='/'>
-                        <h1 className={router.pathname == "/" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Home</h1>
+                        <a href='/'>
+                            <h1 className={router.pathname == "/" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Home</h1>
+                        </a>
                     </Link>
-                    <Link href='/blog'>
-                        <h1 className={router.pathname == "/blog" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Blog</h1>
+                    <Link href='/basketball'>
+                        <a href='/basketball'>
+                            <h1 className={router.pathname == "/basketball" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Basketball</h1>
+                        </a>
                     </Link>
                     <Link href='/contact'>
-                        <h1 className={router.pathname == "/contact" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Contact Us</h1>
+                        <a href='/contact'>
+                            <h1 className={router.pathname == "/contact" ? "cursor-pointer brightness-50" : "cursor-pointer transition duration-500 hover:brightness-50 hover:ease-in-out"}>Contact Us</h1>
+                        </a>
                     </Link>
                 </div>
                 <div className="w-36 -mb-1.5 max-w-[40%] md:hidden transition duration-500 hover:brightness-50 hover:ease-in-out">
                     <Link href='/'>
-                        <a>
+                        <a href='/'>
                             <Image 
                                 className="cursor-pointer"
                                 src="/images/logo-white.webp" 
@@ -100,7 +114,7 @@ function Header() {
                 </div>
                 <div className="-mb-1.5 max-w-[10%] transition duration-500 hover:brightness-75 hover:ease-in-out">
                     <Link href='/trivia-questions'>
-                        <a>
+                        <a href='/trivia-questions'>
                             <Image 
                                 className="cursor-pointer" 
                                 src="/images/trivia-question.png" 
@@ -113,7 +127,7 @@ function Header() {
             </header>
             <div className="hidden w-96 mx-auto py-10 max-w-[50%] md:flex">
                 <Link href='/'>
-                    <a>
+                    <a href='/'>
                         <Image 
                             className="cursor-pointer"
                             src="/images/logo.webp" 

@@ -26,6 +26,16 @@
     color: #a9acb0;
 }
 
+.content ul {
+    list-style-type: disc;
+    margin-left: 1rem;
+}
+
+.content ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+}
+
 @media (min-width: 768px) {
     .content h1 {
         text-align: left;

@@ -56,18 +56,20 @@ export default function AllPosts({posts, quizInfo, search, sort} : Props) {
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-x-5 lg:gap-y-20 gap-y-10">
             {searchResults && searchResults.map((post : any) => (
                 <Link key={post.document.id} href={`/basketball/${post.document.slug}`}>
-                    <div className="ease-in-out duration-100 cursor-pointer bg-white hover:drop-shadow-lg">
-                        <Image 
-                            src={urlFor(post.document.mainImage).url()}
-                            alt={post.title}
-                            height={675}
-                            width={1200}
-                        />
-                        <h1 className="font-header uppercase text-center text-xl">
-                            {post.document.title}
-                        </h1>
-                        <QuizData values={[post.document.plays, post.document.avgScore, post.document.numQuestions]} textColor={false} quizType={post.document.quizType}/>
-                    </div>
+                    <a href={`/basketball/${post.document.slug}`}>
+                        <div className="ease-in-out duration-100 cursor-pointer bg-white hover:drop-shadow-lg">
+                            <Image 
+                                src={urlFor(post.document.mainImage).url()}
+                                alt={post.title}
+                                height={675}
+                                width={1200}
+                            />
+                            <h1 className="font-header uppercase text-center text-xl">
+                                {post.document.title}
+                            </h1>
+                            <QuizData values={[post.document.plays, post.document.avgScore, post.document.numQuestions]} textColor={false} quizType={post.document.quizType}/>
+                        </div>
+                    </a>
                 </Link>
             ))}
         </div>
