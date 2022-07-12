@@ -1,18 +1,4 @@
-import { useEffect } from "react"
-import { useRouter } from "next/router";
-
 export default function GoogleAdsense({ adslot, type, responsive }) {
-    const router = useRouter();
-    useEffect(() => {
-        const handleRouteChange = () => {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-        };
-        router.events.on("routeChangeComplete", handleRouteChange);
-        return () => {
-          router.events.off("routeChangeComplete", handleRouteChange);
-        };
-    }, [router.events]);
-
     function adunit(adunit, type, classvalues) {
         return (
             <div className={classvalues}>
@@ -24,6 +10,9 @@ export default function GoogleAdsense({ adslot, type, responsive }) {
                     data-full-width-responsive={type === "duplex" ? "false" : "true"}
                 >
                 </ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});    
+                </script>
             </div>
         )
     }
