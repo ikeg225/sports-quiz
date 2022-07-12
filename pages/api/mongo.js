@@ -39,7 +39,9 @@ export async function getArticle(url) {
     "@type": "FAQPage",
     "mainEntity": []
   }
-  const options = ["ad", "outbound", "internal"]
+  const optionsOut = ["ad", "outbound", "internal"]
+  const options = ["ad", "internal"]
+  const internalArticles = new Set([url])
 
   for (var i = 0; i < structure.length; i++) {
     if (structure[i]["answer"]) {
@@ -53,16 +55,36 @@ export async function getArticle(url) {
         articlehtml.push(`<ReactPlayer url='${structure[i]["answer"]}' width='100%' />`)
       } else {
         if (tags === "h2") {
-          const option = rand(options)
+          let option = ""
+          if (structure[i]["sourcelink"]) {
+            option = rand(optionsOut)
+          } else {
+            option = rand(options)
+          }
           if (option === "ad") {
             //
           } else if (option === "outbound") {
             articlehtml.push(`<ReadMore url='${structure[i]["sourcelink"]}' title='${structure[i]["sourcetitle"]}' />`)
           } else if (option === "internal") {
-            //articlehtml.push(`<InternalPromo url='${structure[i]["sourcelink"]}' title='${structure[i]["sourcetitle"]}' summary='${structure[i]["answer"].slice(0, 30) + "..."}' />`)
+            let notFound = true
+            while (notFound) {
+              const internal = await db.collection("articlestruct").aggregate([{ $sample: { size: 1 } }]).toArray()
+              const internalID = internal[0]["_id"]
+              const internalAnswer = internal[0]["structure"][0]["answer"]
+              const internalTitle = internal[0]["structure"][0]["question"].charAt(0).toUpperCase() + internal[0]["structure"][0]["question"].slice(1);
+              if (!internalArticles.has(internalID)) {
+                articlehtml.push(`<InternalPromo url='${internalID}' title='${internalTitle}' summary='${internalAnswer ? internalAnswer.slice(0, 100) + "..." : ''}' />`)
+                internalArticles.add(internalID)
+                notFound = false
+              }
+            }
           }
         }
-        articlehtml.push(`<p>${structure[i]["answer"]}</p>`)
+        if (structure[i]["answer"].includes("<ul>") || structure[i]["answer"].includes("<ol>") || structure[i]["answer"].includes("<ToTable")) {
+          articlehtml.push(`${structure[i]["answer"]}`)
+        } else {
+          articlehtml.push(`<p>${structure[i]["answer"]}</p>`)
+        }
         schema["mainEntity"].push({
           "@type": "Question",
           "name": question,
@@ -86,5 +108,22 @@ export async function getArticle(url) {
       articlehtml.push(`<h1>${question}</h1>`)
     }
   }
-  return { "title": title, "content": articlehtml.join(''), "schema":  schema }
+  return { "title": title, "content": articlehtml, "schema": JSON.stringify(schema) }
+}
+
+export async function getTenRandom() {
+  let { db } = await sqconnect();
+  if (db.collection("articlestruct").count({}) > 10) {
+    return await {}
+  } else {
+    const internal = await db.collection("articlestruct").find({}).toArray()
+    const articles = {}
+    for (var article = 0; article < internal.length; article++) {
+      const internalID = internal[article]["_id"]
+      const internalAnswer = internal[article]["structure"][0]["answer"]
+      const internalTitle = internal[article]["structure"][0]["question"].charAt(0).toUpperCase() + internal[article]["structure"][0]["question"].slice(1);
+      articles[internalID] = [internalTitle, internalAnswer ? internalAnswer.slice(0, 200) + "..." : '']
+    }
+    return articles
+  }
 }

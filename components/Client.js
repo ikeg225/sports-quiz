@@ -12,7 +12,7 @@ let client = new Typesense.Client({
     'host': 'typesense.sportsquiz.org',
     'protocol': 'https'
   }],
-  'apiKey': 'Q35ayuJJU5sVgPWLplqeGMG5BIET0oaz',
+  'apiKey': '3X1qCXaKSI9wcXlbjcIA4Yxtq6AFGiTD',
   'connectionTimeoutSeconds': 2
 })
 

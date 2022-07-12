@@ -4,16 +4,14 @@ import PortableText from "react-portable-text"
 import Header from "../../components/Header"
 import SideBar from '../../components/SideBar'
 import StartQuiz from "../../components/StartQuiz"
-import ReadMore from "../../components/ReadMore"
-import InternalPromo from "../../components/InternalPromo"
 import Footer from '../../components/Footer'
 import { Post } from '../../typings'
 import { getData, articleExists, getArticle } from '../api/mongo'
 import { GetStaticProps } from "next"
 import { sanityClient, urlFor } from "../../sanity"
 import styles from '../../styles/basketball.module.css'
-import ReactPlayer from 'react-player/youtube'
-import JsxParser from 'react-jsx-parser'
+
+import StringJSX from "../../components/StringJSX"
 
 interface Props {
     post: Post;
@@ -26,6 +24,7 @@ interface Props {
 
 function Post({ post, blog, posts, quizInfo, slug, qanda }: Props) {
     const qandaExists = Object.keys(qanda).length !== 0
+    const maincontent = qanda["content"]
     return (
         <div className="max-w-7xl mx-auto">
             <div className="md:mx-5">
@@ -47,6 +46,7 @@ function Post({ post, blog, posts, quizInfo, slug, qanda }: Props) {
                 <meta property="og:description" content={post ? post.meta : (blog ? blog.meta : "")} />
                 <meta property="og:image" content={qandaExists ? "/images/Sports-Quiz-Preview.webp" : urlFor(post ? post.mainImage : blog.image).url()} />
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8988173996455041" crossOrigin="anonymous"></script>
+                {qandaExists && <script type="application/ld+json">{qanda.schema}</script>}
                 </Head>
                 <Header />
                 <main className="flex flex-row md:mt-10 flex-wrap">
@@ -86,13 +86,9 @@ function Post({ post, blog, posts, quizInfo, slug, qanda }: Props) {
                                     )
                                 }}
                             />}
-                            {qandaExists && <JsxParser
-                                className={styles.content}
-                                components={{ ReactPlayer }}
-                                jsx={qanda.content}
-                            />}
-                            <ReadMore url="https://www.healthline.com/nutrition/coffee-good-or-bad#:~:text=Consuming%20too%20much%20caffeine%20can,can%20disrupt%20sleep%20(%2035%20)." title="Coffee — Good or Bad? - Healthline" />
-                            <InternalPromo url="how-to-clean-a-dirty-basketball" title="How to clean a dirty basketball" summary="here is some long text about the description of this specific post..."/>
+                            {qandaExists && maincontent.map((content: String) => (
+                                <StringJSX content={content}/>
+                            ))}
                         </div>
                     </div>
                     <div className="w-full md:w-5/12 mx-5 md:m-0">
