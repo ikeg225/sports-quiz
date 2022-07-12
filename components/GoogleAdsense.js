@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 export default function GoogleAdsense({ adslot, type, responsive }) {
     function adunit(adunit, type, classvalues) {
         return (
@@ -10,9 +12,10 @@ export default function GoogleAdsense({ adslot, type, responsive }) {
                     data-full-width-responsive={type === "duplex" ? "false" : "true"}
                 >
                 </ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});    
-                </script>
+                <Script
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{__html: `(adsbygoogle = window.adsbygoogle || []).push({})`}}
+                />
             </div>
         )
     }
