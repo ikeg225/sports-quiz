@@ -28,6 +28,10 @@ function rand(items) {
   return items[items.length * Math.random() | 0];
 }
 
+function removeTags(summary) {
+  return summary.replace(/(<\/?p>|<\/?ol>|<\/?li>|<\/?ul>|<\/?h1>|<\/?h2>|<\/?h3>|<ReadMore .*?\/>|<InternalPromo .*?\/>|<ReactPlayer .*?\/>|<ToTable .*?\/>)/g, '')
+}
+
 export async function getArticle(url) {
   let { db } = await sqconnect();
   const article = await db.collection("articlestruct").find({"_id": url}).toArray();
@@ -73,18 +77,14 @@ export async function getArticle(url) {
               const internalAnswer = internal[0]["structure"][0]["answer"]
               const internalTitle = internal[0]["structure"][0]["question"].charAt(0).toUpperCase() + internal[0]["structure"][0]["question"].slice(1);
               if (!internalArticles.has(internalID)) {
-                articlehtml.push(`<InternalPromo url='${internalID}' title='${internalTitle}' summary='${internalAnswer ? internalAnswer.slice(0, 100) + "..." : ''}' />`)
+                articlehtml.push(`<InternalPromo url='${internalID}' title='${internalTitle}' summary='${internalAnswer ? removeTags(internalAnswer).slice(0, 100) + "..." : ''}' />`)
                 internalArticles.add(internalID)
                 notFound = false
               }
             }
           }
         }
-        if (structure[i]["answer"].includes("<ul>") || structure[i]["answer"].includes("<ol>") || structure[i]["answer"].includes("<ToTable")) {
-          articlehtml.push(`${structure[i]["answer"]}`)
-        } else {
-          articlehtml.push(`<p>${structure[i]["answer"]}</p>`)
-        }
+        articlehtml.push(`${structure[i]["answer"]}`)
         schema["mainEntity"].push({
           "@type": "Question",
           "name": question,
@@ -122,7 +122,7 @@ export async function getTenRandom() {
       const internalID = internal[article]["_id"]
       const internalAnswer = internal[article]["structure"][0]["answer"]
       const internalTitle = internal[article]["structure"][0]["question"].charAt(0).toUpperCase() + internal[article]["structure"][0]["question"].slice(1);
-      articles[internalID] = [internalTitle, internalAnswer ? internalAnswer.slice(0, 200) + "..." : '']
+      articles[internalID] = [internalTitle, internalAnswer ? removeTags(internalAnswer).slice(0, 200) + "..." : '']
     }
     return articles
   }

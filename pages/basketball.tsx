@@ -9,7 +9,6 @@ import { sanityClient } from '../sanity.js'
 import { getTenRandom } from './api/mongo'
 
 export default function Basketball({ blogs, posts, qanda } : any) {
-    console.log(qanda)
     return (
         <div className="max-w-7xl mx-auto">
             <div className="md:mx-5">

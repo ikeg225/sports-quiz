@@ -9,7 +9,6 @@ import { Post } from '../../typings'
 import { getData, articleExists, getArticle } from '../api/mongo'
 import { GetStaticProps } from "next"
 import { sanityClient, urlFor } from "../../sanity"
-import styles from '../../styles/basketball.module.css'
 
 import StringJSX from "../../components/StringJSX"
 

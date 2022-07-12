@@ -33,8 +33,10 @@ export default function StringJSX({ content } : any) {
         return <h3 className="text-lg my-3 font-header uppercase text-stone-400" dangerouslySetInnerHTML={{__html: found[1]}} />
     }
     else if (content.includes("<p>")) {
-        const found = content.match(/<p>((.|\n)*?)<\/p>/)
-        return <p dangerouslySetInnerHTML={{__html: found[1]}} />
+        const found = content.match(/<p>((.|\n)*?)<\/p>/g)
+        return found.map((ptag : any) => (
+            <p dangerouslySetInnerHTML={{__html: ptag.match(/<p>((.|\n)*?)<\/p>/)[1]}} />
+        ))
     }
     else if (content.includes("<ol>")) {
         const found = content.match(/<ol>((.|\n)*?)<\/ol>/)
