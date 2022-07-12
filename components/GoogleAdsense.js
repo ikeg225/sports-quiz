@@ -1,9 +1,17 @@
 import { useEffect } from "react"
+import { useRouter } from "next/router";
 
 export default function GoogleAdsense({ adslot, type, responsive }) {
+    const router = useRouter();
     useEffect(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({})
-    }, [])
+        const handleRouteChange = () => {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+        };
+        router.events.on("routeChangeComplete", handleRouteChange);
+        return () => {
+          router.events.off("routeChangeComplete", handleRouteChange);
+        };
+    }, [router.events]);
 
     function adunit(adunit, type, classvalues) {
         return (
