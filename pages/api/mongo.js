@@ -43,6 +43,9 @@ export async function getArticle(url) {
     "@type": "FAQPage",
     "mainEntity": []
   }
+  const adslotDesktop = ["5134858058", "5648318782", "5632571564", "2036376834", "3006408221", "9175396603", "8767120927"]
+  const adslotMobile = ["9511272677", "7137494420", "4470968483", "8010488745", "1709073770", "7454039256", "1693326552"]
+  let adnumber = 0
   const optionsOut = ["ad", "outbound", "internal"]
   const options = ["ad", "internal"]
   const internalArticles = new Set([url])
@@ -66,7 +69,8 @@ export async function getArticle(url) {
             option = rand(options)
           }
           if (option === "ad") {
-            //
+            articlehtml.push(`<GoogleAdsense adslot='${adslotDesktop[adnumber] + ',' + adslotMobile[adnumber]}' type='article' responsive='yes' />`)
+            adnumber = adnumber + 1
           } else if (option === "outbound") {
             articlehtml.push(`<ReadMore url='${structure[i]["sourcelink"]}' title='${structure[i]["sourcetitle"]}' />`)
           } else if (option === "internal") {

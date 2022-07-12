@@ -3,6 +3,7 @@ import { Post } from '../typings'
 import { urlFor } from '../sanity.js'
 import StickyBox from 'react-sticky-box'
 import { useState, useEffect } from 'react'
+import GoogleAdsense from './GoogleAdsense'
 
 interface Props {
     posts: [Post];
@@ -50,6 +51,7 @@ export default function SideBar({ posts }: Props) {
                         </Link>
                     ))}
                 </div>
+                <GoogleAdsense adslot="5575897098" type="duplex" responsive="no" />
             </div>
         </StickyBox>
     )

@@ -2,6 +2,7 @@ import ReactPlayer from 'react-player/youtube'
 import ReadMore from "./ReadMore"
 import InternalPromo from "./InternalPromo"
 import ToTable from "./ToTable"
+import GoogleAdsense from "./GoogleAdsense"
 
 export default function StringJSX({ content } : any) {
     if (content.includes("<ReactPlayer")) {
@@ -11,6 +12,10 @@ export default function StringJSX({ content } : any) {
     else if (content.includes("<InternalPromo")) {
         const found = content.match(/<InternalPromo url='((.|\n)*?)' title='((.|\n)*?)' summary='((.|\n)*?)' \/>/)
         return <InternalPromo url={found[1]} title={found[3]} summary={found[5]} />
+    }
+    else if (content.includes("<GoogleAdsense")) {
+        const found = content.match(/<GoogleAdsense adslot='((.|\n)*?)' type='((.|\n)*?)' responsive='((.|\n)*?)' \/>/)
+        return <GoogleAdsense adslot={found[1]} type={found[3]} responsive={found[5]} />
     }
     else if (content.includes("<ReadMore")) {
         const found = content.match(/<ReadMore url='(.*?)' title='(.*?)' \/>/)

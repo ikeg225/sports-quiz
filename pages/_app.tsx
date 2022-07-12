@@ -37,6 +37,26 @@ function MyApp({ Component, pageProps }: AppProps) {
           `,
         }}
       />
+      <Script
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
+      <Script  
+          id="adsense-id"  async
+          onError={(e) => { console.error("Script failed to load", e); }}
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8988173996455041"
+          crossOrigin="anonymous"
+      />
       <Component {...pageProps} />
     </>
   )
