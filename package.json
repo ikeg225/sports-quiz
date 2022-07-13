@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
@@ -14,6 +15,7 @@
     "next": "latest",
     "next-connect": "^0.12.2",
     "next-sanity": "^0.5.2",
+    "next-sitemap": "^3.1.10",
     "react": "^17.0.2",
     "react-burger-menu": "^3.0.6",
     "react-dom": "^17.0.2",

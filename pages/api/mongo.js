@@ -59,7 +59,6 @@ export async function getArticle(url) {
       const tags = structure[i]["tag"]
       articlehtml.push(`<${tags}>${question}</${tags}>`)
       if (structure[i]["answer"].includes("https://www.youtube.com/watch?")) {
-        console.log(structure[i]["answer"])
         articlehtml.push(`<ReactPlayer url='${structure[i]["answer"]}' width='100%' />`)
       } else {
         articlehtml.push(`${structure[i]["answer"]}`)
@@ -118,16 +117,22 @@ export async function getArticle(url) {
 
 export async function getTenRandom() {
   let { db } = await sqconnect();
-  //await db.collection("articlestruct").count({})
-  if (db.collection("articlestruct").count({}) > 10) {
-    return await db.collection("articlestruct").aggregate([{ $sample: { size: 1 } }])
+  if (await db.collection("articlestruct").count({}) > 10) {
+    const articles = {}
+    while (Object.keys(articles).length < 10) {
+      const randomArticle = await db.collection("articlestruct").aggregate([{ $sample: { size: 1 } }]).toArray()
+      if (!(randomArticle[0]["_id"] in articles) && randomArticle[0]["structure"][0]["answer"].length >= 200) {
+        articles[randomArticle[0]["_id"]] = [randomArticle[0]["structure"][0]["question"], removeTags(randomArticle[0]["structure"][0]["answer"]).slice(0, 200) + "..."]
+      }
+    }
+    return articles
   } else {
     const internal = await db.collection("articlestruct").find({}).toArray()
     const articles = {}
     for (var article = 0; article < internal.length; article++) {
       const internalID = internal[article]["_id"]
       const internalAnswer = internal[article]["structure"][0]["answer"]
-      const internalTitle = internal[article]["structure"][0]["question"].charAt(0).toUpperCase() + internal[article]["structure"][0]["question"].slice(1);
+      const internalTitle = internal[article]["structure"][0]["question"]
       articles[internalID] = [internalTitle, internalAnswer ? removeTags(internalAnswer).slice(0, 200) + "..." : '']
     }
     return articles
