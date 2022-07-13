@@ -138,3 +138,8 @@ export async function getTenRandom() {
     return articles
   }
 }
+
+export async function getAllIDs() {
+  let { db } = await sqconnect();
+  return await db.collection('articlestruct').find({}).project( {_id: 1} ).map(x => x._id).toArray();
+}
