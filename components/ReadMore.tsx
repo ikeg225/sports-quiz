@@ -6,7 +6,7 @@ interface Props {
 export default function ReadMore({ url, title }: Props) {
     const re = /https?:\/\/([\w\.\-\–\—]+)/
     return (
-        <div className="bg-black rounded flex xsm:flex-row flex-col py-5 xsm:px-10 px-5 my-5 content-center items-center xsm:gap-x-1 gap-y-5 xsm:text-left text-center">
+        <div className="bg-black rounded flex xsm:flex-row flex-col py-5 xsm:px-10 px-5 mt-5 mb-10 content-center items-center xsm:gap-x-1 gap-y-5 xsm:text-left text-center">
             <div className="flex flex-col font-body xsm:w-8/12">
                 <h1 className="text-white">
                     {title}

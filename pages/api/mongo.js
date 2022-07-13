@@ -59,8 +59,18 @@ export async function getArticle(url) {
       const tags = structure[i]["tag"]
       articlehtml.push(`<${tags}>${question}</${tags}>`)
       if (structure[i]["answer"].includes("https://www.youtube.com/watch?")) {
+        console.log(structure[i]["answer"])
         articlehtml.push(`<ReactPlayer url='${structure[i]["answer"]}' width='100%' />`)
       } else {
+        articlehtml.push(`${structure[i]["answer"]}`)
+        schema["mainEntity"].push({
+          "@type": "Question",
+          "name": question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": structure[i]["answer"]
+          }
+        })
         if (tags === "h2") {
           let option = ""
           if (structure[i]["sourcelink"]) {
@@ -88,15 +98,6 @@ export async function getArticle(url) {
             }
           }
         }
-        articlehtml.push(`${structure[i]["answer"]}`)
-        schema["mainEntity"].push({
-          "@type": "Question",
-          "name": question,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": structure[i]["answer"]
-          }
-        })
       }
     } else if (structure[i]["youtube"]) {
       const question = structure[i]["question"].charAt(0).toUpperCase() + structure[i]["question"].slice(1);
@@ -117,8 +118,9 @@ export async function getArticle(url) {
 
 export async function getTenRandom() {
   let { db } = await sqconnect();
+  //await db.collection("articlestruct").count({})
   if (db.collection("articlestruct").count({}) > 10) {
-    return await {}
+    return await db.collection("articlestruct").aggregate([{ $sample: { size: 1 } }])
   } else {
     const internal = await db.collection("articlestruct").find({}).toArray()
     const articles = {}

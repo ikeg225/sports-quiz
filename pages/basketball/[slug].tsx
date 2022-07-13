@@ -9,7 +9,7 @@ import { Post } from '../../typings'
 import { getData, articleExists, getArticle } from '../api/mongo'
 import { GetStaticProps } from "next"
 import { sanityClient, urlFor } from "../../sanity"
-
+import GoogleAdsense from "../../components/GoogleAdsense"
 import StringJSX from "../../components/StringJSX"
 
 interface Props {
@@ -62,7 +62,9 @@ function Post({ post, blog, posts, quizInfo, slug, qanda }: Props) {
                             {!qandaExists && <h1 className="text-2xl my-5 font-header uppercase text-center md:text-left">
                                 {post ? post.title : blog.name}
                             </h1>}
+                            {!qandaExists && <GoogleAdsense adslot='3458668519' type='article' responsive='no' />}
                             {post && <StartQuiz url={post.id} values={quizInfo[post.id]} outbound={post.outbound} quizType={post.quiztype}/>}
+                            {post && <GoogleAdsense adslot='4921043559' type='article' responsive='no' />}
                             {!qandaExists && <PortableText 
                                 className=""
                                 dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
@@ -85,6 +87,7 @@ function Post({ post, blog, posts, quizInfo, slug, qanda }: Props) {
                                     )
                                 }}
                             />}
+                            {!qandaExists && <GoogleAdsense adslot='8668716878' type='article' responsive='no' />}
                             {qandaExists && maincontent.map((content: String) => (
                                 <StringJSX content={content}/>
                             ))}

@@ -6,7 +6,7 @@ import GoogleAdsense from "./GoogleAdsense"
 
 export default function StringJSX({ content } : any) {
     if (content.includes("<ReactPlayer")) {
-        const found = content.match(/<ReactPlayer url='([\w\/:.?=]+)' width='100%' \/>/)
+        const found = content.match(/<ReactPlayer url='([\w\/:.?=\-–—]+)' width='100%' \/>/)
         return <ReactPlayer url={found[1]} width='100%' style={{marginBottom: "30px"}}/>
     }
     else if (content.includes("<InternalPromo")) {
