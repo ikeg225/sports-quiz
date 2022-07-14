@@ -2,7 +2,7 @@
 const config = {
     siteUrl: 'https://sportsquiz.org',
     generateRobotsTxt: true,
-    exclude: ['/server-sitemap-index.xml'],
+    exclude: ['/server-sitemap-index.xml', '/server-sitemap'],
     robotsTxtOptions: {
         additionalSitemaps: [
             'https://sportsquiz.org/server-sitemap-index.xml'
