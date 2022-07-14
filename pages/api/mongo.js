@@ -141,5 +141,15 @@ export async function getTenRandom() {
 
 export async function getAllIDs() {
   let { db } = await sqconnect();
-  return await db.collection('articlestruct').find({}).project( {_id: 1} ).map(x => x._id).toArray();
+  return await db.collection('articlestruct').find({}).project({ _id: 1 }).map(x => x._id).toArray();
+}
+
+export async function getRange(skip, limit) {
+  let { db } = await sqconnect();
+  return await db.collection('articlestruct').find({}).skip(skip).limit(limit).project({ _id: 1}).map(x => x._id).toArray();
+}
+
+export async function numOfCollections() {
+  let { db } = await sqconnect();
+  return await db.collection("articlestruct").count({});
 }

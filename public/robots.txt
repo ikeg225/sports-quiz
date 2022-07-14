@@ -7,4 +7,4 @@ Host: https://sportsquiz.org
 
 # Sitemaps
 Sitemap: https://sportsquiz.org/sitemap.xml
-Sitemap: https://sportsquiz.org/server-sitemap.xml
+Sitemap: https://sportsquiz.org/server-sitemap-index.xml
