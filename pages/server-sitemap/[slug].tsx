@@ -23,9 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             })
         }
 
-        ctx.res.setHeader("Content-Type", "text/xml");
-        ctx.res.write(await getServerSideSitemap(ctx, fields));
-        ctx.res.end();
+        return getServerSideSitemap(ctx, fields)
     }
 
     return {
